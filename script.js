@@ -6,6 +6,20 @@ for (var i = 0; i < 25; i++){
   dataset.push(Math.round(Math.random() * 30 + 3));
 }
 
+// svg elements
+// circle <circle cx="250" cy="150" r="50"/>
+// ellipse <ellipse cx="250" cy="150" rx="50" ry="50"/>
+// rectangle <rect x="0" y="10" width="30" height="30"/>
+// line <line x1="0" y1="0" x2="50" y2="50" stroke="black"/>
+// text <text x="250" y="25" font-family="sans-serif" font-size="25" fill="gray">
+// Easy-peasy</text>
+// path - complex shapes
+// styling: fill, stroke, stroke-width, opacity, font-family, font-size
+// opacity is multiplicative of rgba values
+// or define as a CSS class <circl cx="25" cy="25" r="22" class="pumpkin" />
+// svg is 2d but has an order; later svg elements occlude earlier ones
+// more: http://svgpocketguide.com/
+
 
 /**
 // draw rectangles with data from dataset
