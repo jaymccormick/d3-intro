@@ -1,7 +1,23 @@
-var dataset = [3, 6, 9, 12, 15];
+// initialize dataset list
+var dataset = [];
+
+// make dataset list of random numbers
+for (var i = 0; i < 25; i++){
+  dataset.push(Math.round(Math.random() * 30 + 3));
+}
 
 
 /**
+// draw rectangles with data from dataset
+d3.select("body").selectAll("div")
+  .data(dataset)
+  .enter()
+  .append("div")
+  .attr("class", "bar")
+  .style("height", d => d * 5 + "px");
+
+
+
 // drawing with divs
 d3.select("body").selectAll("div")
   .data(dataset)
