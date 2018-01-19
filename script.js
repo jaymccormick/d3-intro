@@ -16,6 +16,7 @@ var svg = d3.select("body")
             .attr("width", w)
             .attr("height", h);
 
+/**
 var circles = svg.selectAll("circle")
     .data(dataset)
     .enter()
@@ -41,7 +42,7 @@ circles.attr("cx", (d, i) => i * 50 + 25)
 // more: http://svgpocketguide.com/
 
 
-/**
+
 // draw rectangles with data from dataset
 d3.select("body").selectAll("div")
   .data(dataset)
