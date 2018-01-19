@@ -2,6 +2,34 @@ var dataset = [3, 6, 9, 12, 15];
 
 
 /**
+// drawing with divs
+d3.select("body").selectAll("div")
+  .data(dataset)
+  .enter()
+  .append("div")
+  .attr("class", "bar")
+  .style("height", d =>
+    d * 5 + "px") // have to include "px"
+  .style("margin-right", "10px");
+
+
+
+
+// setting attributes
+attr([property, value])
+for any HTML element <>, set property-value pair of attribute
+related method: classed([class, boolean]) e.g. .classed("bar", true) for adding
+and removing classes
+<p class="caption">
+<select id="country">
+<img src="logo.png" width="100px" alt="Logo" />
+property | value
+class | caption
+id | country
+src | logo.png
+width | 100px
+alt | Logo
+
 
 // setting css text color with d
 d3.select("body").selectAll("p")
