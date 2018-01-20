@@ -2,19 +2,35 @@
 var dataset = [];
 
 // make dataset list of random numbers
-for (var i = 0; i < 10; i++){
+for (var i = 0; i < 20; i++){
   dataset.push(Math.round(Math.random() * 20 + 1));
 }
 
 // let's work with svg
 // width and height variables
 var w = 500;
-var h = 50;
+var h = 250;
+
 // add the svg element that will hold other svg elements
+// can reference without having to reselect with d3.select("svg")
 var svg = d3.select("body")
             .append("svg")
             .attr("width", w)
             .attr("height", h);
+
+// bar chart with svg rects
+var rects = svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+
+rects.attr("x", (d, i) => i * (w / dataset.length))
+      .attr("y", d => h - d * 10)
+      .attr("height", d => d * 10)
+      .attr("width", 20)
+      .attr("fill", d =>
+            "rgb(" + d * 5 + "," + d * 10 + "," + d * 15 + " )"
+            );
 
 /**
 var circles = svg.selectAll("circle")
