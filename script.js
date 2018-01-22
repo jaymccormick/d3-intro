@@ -11,6 +11,9 @@ for (var i = 0; i < 20; i++){
 var w = 500;
 var h = 250;
 
+// bar width variable
+var barPadding = 1;
+
 // add the svg element that will hold other svg elements
 // can reference without having to reselect with d3.select("svg")
 var svg = d3.select("body")
@@ -27,10 +30,25 @@ var rects = svg.selectAll("rect")
 rects.attr("x", (d, i) => i * (w / dataset.length))
       .attr("y", d => h - d * 10)
       .attr("height", d => d * 10)
-      .attr("width", 20)
+      .attr("width", w / dataset.length - barPadding)
       .attr("fill", d =>
             "rgb(" + d * 5 + "," + d * 10 + "," + d * 15 + " )"
             );
+
+// add text labels
+var labels = svg.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(d => d);
+
+labels.attr("x", (d, i) => (i* w / dataset.length) + (w / dataset.length - barPadding) / 2)
+      .attr("y", d => h - d * 10 + 10)
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "11px")
+      .attr("fill", "white")
+      .attr("text-anchor", "middle");
+
 
 /**
 var circles = svg.selectAll("circle")
