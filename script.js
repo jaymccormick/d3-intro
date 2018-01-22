@@ -11,8 +11,7 @@ for (var i = 0; i < 20; i++){
 var w = 500;
 var h = 250;
 
-// bar width variable
-var barPadding = 1;
+
 
 // add the svg element that will hold other svg elements
 // can reference without having to reselect with d3.select("svg")
@@ -21,7 +20,15 @@ var svg = d3.select("body")
             .attr("width", w)
             .attr("height", h);
 
+
+
+/**
 // bar chart with svg rects
+
+// bar width variable
+var barPadding = 1;
+
+// bars
 var rects = svg.selectAll("rect")
     .data(dataset)
     .enter()
@@ -50,7 +57,7 @@ labels.attr("x", (d, i) => (i* w / dataset.length) + (w / dataset.length - barPa
       .attr("text-anchor", "middle");
 
 
-/**
+
 var circles = svg.selectAll("circle")
     .data(dataset)
     .enter()
