@@ -3,14 +3,15 @@ var dataset = [];
 
 // make dataset m-by-n matrix of random points
 for (var i = 0; i < 10; i++){
-  var randX = Math.round(Math.random() * 250 + 1);
-  var randY = Math.round(Math.random() * 100 + 1);
+  // + 6 to keep circles of r = 5 within svg
+  var randX = Math.round(Math.random() * 250 + 6);
+  var randY = Math.round(Math.random() * 100 + 6);
   dataset.push([randX, randY]);
 }
 
 // let's work with svg
 // width and height variables
-var w = 500;
+var w = 700;
 var h = 250;
 
 
@@ -29,9 +30,19 @@ var circles = svg.selectAll("circle")
   .append("circle");
 
 // set circle attributes
+// d is current value of dataset, one of the x, y pairs stored as arrays
 circles.attr("cx", d => d[0]) // get the x coordinate for the pair
         .attr("cy", d => d[1])
         .attr("r", 5);
+
+// label the points in the scatterplot
+svg.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(d => "(" + d[0] + ", " + d[1] + ")")
+    .attr("x", (d, i) => i * 70)
+    .attr("y", d => h - 15);
 
 /**
 // make dataset list of random numbers
