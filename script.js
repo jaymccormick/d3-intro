@@ -22,7 +22,16 @@ var svg = d3.select("body")
             .attr("width", w)
             .attr("height", h);
 
+// make circles for each data point in dataset
+var circles = svg.selectAll("circle")
+  .data(dataset)
+  .enter()
+  .append("circle");
 
+// set circle attributes
+circles.attr("cx", d => d[0]) // get the x coordinate for the pair
+        .attr("cy", d => d[1])
+        .attr("r", 5);
 
 /**
 // make dataset list of random numbers
