@@ -3,11 +3,11 @@ var dataset = [];
 
 // make dataset m-by-n matrix of random points
 for (var i = 0; i < 10; i++){
-  // + 6 to keep circles of r = 5 within svg
-  var randX = Math.round(Math.random() * 250 + 6);
-  var randY = Math.round(Math.random() * 100 + 6);
+  var randX = Math.round(Math.random() * 250);
+  var randY = Math.round(Math.random() * 240 + 10);
 
-  dataset.push([randX, randY]);}
+  dataset.push([randX, randY]);
+}
 
 
 
@@ -36,20 +36,22 @@ var circles = svg.selectAll("circle")
 var xMax = d3.max(dataset, d => d[0]);
 var yMax = d3.max(dataset, d => d[1]);
 
+var padding = 20;
+
 var xScale = d3.scaleLinear()
                     .domain([0, xMax])
-                    .range([0, w]);
+                    .range([padding, w - padding]);
 
 var yScale = d3.scaleLinear()
                     .domain([0, yMax])
-                    .range([0, h]);
+                    .range([h - padding, padding]);
 
 
 // set circle attributes
 // d is current value of dataset, one of the x, y pairs stored as arrays
 circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
         .attr("cy", d => yScale(d[1]))
-        .attr("r", 5);
+        .attr("r", d => Math.sqrt(h - d[1]));
 
 
 /**
