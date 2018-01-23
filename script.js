@@ -9,7 +9,7 @@ for (var i = 0; i < 10; i++){
   dataset.push([randX, randY]);
 }
 
-
+console.log(dataset.length);
 
 // let's work with svg
 // width and height variables
@@ -53,10 +53,6 @@ circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
         .attr("cy", d => yScale(d[1]))
         .attr("r", d => Math.sqrt(d[1]));
 
-// linear scale for text position
-var textScale = d3.scaleLinear()
-                  .domain([0, xMax])
-                  .range([padding, w - 4 * padding])
 
 // label the points in the scatterplot
 svg.selectAll("text")
@@ -64,9 +60,9 @@ svg.selectAll("text")
     .enter()
     .append("text")
     .text(d => "(" + d[0] + ", " + d[1] + ")")
-    .attr("x", d => textScale(d[0]))
-    .attr("y", d => h - 5);
 
+
+/**
 // draw curve from points to coordinates
 // <line x1="0" y1="0" x2="500" y2="50" stroke="black"/>
 svg.selectAll("line")
@@ -75,11 +71,11 @@ svg.selectAll("line")
   .append("line")
   .attr("x1", d => xScale(d[0]))
   .attr("y1", d => yScale(d[1]))
-  .attr("x2", d => textScale(d[0] + 10))
+  .attr("x2", d => ) // <-- need x2
   .attr("y2", h - 20)
   .attr("stroke", "black");
 
-/**
+
 
 
 // make dataset list of random numbers
