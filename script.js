@@ -54,7 +54,6 @@ circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
         .attr("r", d => Math.sqrt(h - d[1]));
 
 
-/**
 // label the points in the scatterplot
 svg.selectAll("text")
     .data(dataset)
@@ -62,7 +61,7 @@ svg.selectAll("text")
     .append("text")
     .text(d => "(" + d[0] + ", " + d[1] + ")")
     .attr("x", (d, i) => i * 70)
-    .attr("y", d => h - 15);
+    .attr("y", d => h - 5);
 
 // draw curve from points to coordinates
 // <line x1="0" y1="0" x2="500" y2="50" stroke="black"/>
@@ -70,11 +69,14 @@ svg.selectAll("line")
   .data(dataset)
   .enter()
   .append("line")
-  .attr("x1", d => d[0])
-  .attr("y1", d => d[1])
-  .attr("x2", (d, i) => i * 70 + 5)
-  .attr("y2", h - 25)
+  .attr("x1", d => xScale(d[0]))
+  .attr("y1", d => yScale(d[1]))
+  .attr("x2", (d, i) => i * 70 + 45)
+  .attr("y2", h - 15)
   .attr("stroke", "black");
+
+/**
+
 
 // make dataset list of random numbers
 for (var i = 0; i < 20; i++){
