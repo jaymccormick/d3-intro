@@ -4,7 +4,7 @@ var dataset = [];
 // make dataset m-by-n matrix of random points
 for (var i = 0; i < 10; i++){
   var randX = Math.round(Math.random() * 250);
-  var randY = Math.round(Math.random() * 240 + 10);
+  var randY = Math.round(Math.random() * 250 + 1);
 
   dataset.push([randX, randY]);
 }
@@ -14,7 +14,7 @@ for (var i = 0; i < 10; i++){
 // let's work with svg
 // width and height variables
 var w = 700;
-var h = 250;
+var h = 450;
 
 
 // add the svg element that will hold other svg elements
@@ -51,8 +51,12 @@ var yScale = d3.scaleLinear()
 // d is current value of dataset, one of the x, y pairs stored as arrays
 circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
         .attr("cy", d => yScale(d[1]))
-        .attr("r", d => Math.sqrt(h - d[1]));
+        .attr("r", d => Math.sqrt(d[1]));
 
+// linear scale for text position
+var textScale = d3.scaleLinear()
+                  .domain([0, xMax])
+                  .range([padding, w - 4 * padding])
 
 // label the points in the scatterplot
 svg.selectAll("text")
@@ -60,7 +64,7 @@ svg.selectAll("text")
     .enter()
     .append("text")
     .text(d => "(" + d[0] + ", " + d[1] + ")")
-    .attr("x", (d, i) => i * 70)
+    .attr("x", d => textScale(d[0]))
     .attr("y", d => h - 5);
 
 // draw curve from points to coordinates
@@ -71,8 +75,8 @@ svg.selectAll("line")
   .append("line")
   .attr("x1", d => xScale(d[0]))
   .attr("y1", d => yScale(d[1]))
-  .attr("x2", (d, i) => i * 70 + 45)
-  .attr("y2", h - 15)
+  .attr("x2", d => textScale(d[0] + 10))
+  .attr("y2", h - 20)
   .attr("stroke", "black");
 
 /**
