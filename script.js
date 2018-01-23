@@ -6,14 +6,15 @@ for (var i = 0; i < 10; i++){
   // + 6 to keep circles of r = 5 within svg
   var randX = Math.round(Math.random() * 250 + 6);
   var randY = Math.round(Math.random() * 100 + 6);
-  dataset.push([randX, randY]);
-}
+
+  dataset.push([randX, randY]);}
+
+
 
 // let's work with svg
 // width and height variables
 var w = 700;
 var h = 250;
-
 
 
 // add the svg element that will hold other svg elements
@@ -25,16 +26,30 @@ var svg = d3.select("body")
 
 // make circles for each data point in dataset
 var circles = svg.selectAll("circle")
-  .data(dataset)
-  .enter()
-  .append("circle");
+                  .data(dataset)
+                  .enter()
+                  .append("circle");
+
+
+// create a linear scale function with domain and range mapping
+// map max x, y value of dataset to max width, height
+var xMax = d3.max(dataset, d => d[0]);
+var yMax = d3.max(dataset, d => d[1]);
+
+var xScale = d3.scaleLinear()
+                    .domain([0, xMax])
+                    .range([0, w]);
+
+var yScale = d3.scaleLinear()
+                    .domain([0, yMax])
+                    .range([0, h]);
+
 
 // set circle attributes
 // d is current value of dataset, one of the x, y pairs stored as arrays
-circles.attr("cx", d => d[0]) // get the x coordinate for the pair
-        .attr("cy", d => d[1])
+circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
+        .attr("cy", d => yScale(d[1]))
         .attr("r", 5);
-
 
 
 /**
