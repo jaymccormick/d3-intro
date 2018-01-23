@@ -1,9 +1,11 @@
 // initialize dataset list
 var dataset = [];
 
-// make dataset list of random numbers
-for (var i = 0; i < 20; i++){
-  dataset.push(Math.round(Math.random() * 20 + 1));
+// make dataset m-by-n matrix of random points
+for (var i = 0; i < 10; i++){
+  var randX = Math.round(Math.random() * 250 + 1);
+  var randY = Math.round(Math.random() * 100 + 1);
+  dataset.push([randX, randY]);
 }
 
 // let's work with svg
@@ -23,6 +25,11 @@ var svg = d3.select("body")
 
 
 /**
+// make dataset list of random numbers
+for (var i = 0; i < 20; i++){
+  dataset.push(Math.round(Math.random() * 20 + 1));
+}
+
 // bar chart with svg rects
 
 // bar width variable
