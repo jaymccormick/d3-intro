@@ -49,13 +49,19 @@ var yScale = d3.scaleLinear()
 
 // set circle attributes
 // d is current value of dataset, one of the x, y pairs stored as arrays
-circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
+circles.attr("cx", d => xScale(d[0]))
         .attr("cy", d => yScale(d[1]))
         .attr("r", d => Math.sqrt(d[1]));
 
 
-
-
+// label points with text
+svg.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(d => "(" + Math.round(xScale(d[0])) + ", " + Math.round(yScale(d[1])) + ")" )
+    .attr("x", d => xScale(d[0]) - 45)
+    .attr("y", d => yScale(d[1]) + Math.sqrt(d[1]) + 15);
 
 
 /**
