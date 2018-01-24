@@ -54,6 +54,11 @@ circles.attr("cx", d => xScale(d[0])) // get the x coordinate for the pair
         .attr("r", d => Math.sqrt(d[1]));
 
 
+
+
+
+
+/**
 // label the points in the scatterplot
 svg.selectAll("text")
     .data(dataset)
@@ -76,9 +81,6 @@ svg.selectAll("line")
   .attr("stroke", "black");
 
 
-
-
-/**
 // make dataset list of random numbers
 for (var i = 0; i < 20; i++){
   dataset.push(Math.round(Math.random() * 20 + 1));
