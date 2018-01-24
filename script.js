@@ -61,6 +61,7 @@ var xAxis = d3.axisBottom(xScale) ; // orientation
 var yAxis = d3.axisLeft(yScale);
 
 // call axis functions defined above
+// fix transforms/axis scales calculations to get alignment and length right
 svg.append("g")
     .attr("class", "axis") // add class for css
     .attr("transform", "translate(-6," + (h - 30) + ")") // position
