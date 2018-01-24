@@ -2,8 +2,8 @@
 var dataset = [];
 
 // make dataset m-by-n matrix of random points
-for (var i = 0; i < 10; i++){
-  var randX = Math.round(Math.random() * 250);
+for (var i = 0; i < 20; i++){
+  var randX = Math.round(Math.random() * 250 + 1);
   var randY = Math.round(Math.random() * 250 + 1);
 
   dataset.push([randX, randY]);
@@ -39,7 +39,7 @@ var padding = 30;
 
 var xScale = d3.scaleLinear()
                     .domain([0, xMax])
-                    .range([padding + 10, w - padding + 10]);
+                    .range([padding + Math.sqrt(xMax), w - padding + 10]);
 
 var yScale = d3.scaleLinear()
                     .domain([0, yMax])
@@ -60,10 +60,10 @@ var xAxis = d3.axisBottom(xScale) ; // orientation
 
 var yAxis = d3.axisLeft(yScale);
 
-// call axis function defined above
+// call axis functions defined above
 svg.append("g")
     .attr("class", "axis") // add class for css
-    .attr("transform", "translate(0," + (h - 30) + ")") // position
+    .attr("transform", "translate(-6," + (h - 30) + ")") // position
     .call(xAxis);
 
 svg.append("g")
