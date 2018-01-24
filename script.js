@@ -9,7 +9,6 @@ for (var i = 0; i < 10; i++){
   dataset.push([randX, randY]);
 }
 
-console.log(dataset.length);
 
 // let's work with svg
 // width and height variables
@@ -63,6 +62,13 @@ svg.selectAll("text")
     .attr("x", d => xScale(d[0]) - 45)
     .attr("y", d => yScale(d[1]) + Math.sqrt(d[1]) + 15);
 
+// set up axis by defining axis function
+var xAxis = d3.axisBottom(xScale) ; // orientation
+
+// call axis function defined above
+svg.append("g")
+    .attr("transform", "translate(0," + (h - 30) + ")") // position
+    .call(xAxis);
 
 /**
 // label the points in the scatterplot
