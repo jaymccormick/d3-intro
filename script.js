@@ -63,8 +63,6 @@ svg.selectAll("text")
     .attr("x", (d, i) => i * 70)
     .attr("y", () => h - 20);
 
-
-/**
 // draw curve from points to coordinates
 // <line x1="0" y1="0" x2="500" y2="50" stroke="black"/>
 svg.selectAll("line")
@@ -73,13 +71,14 @@ svg.selectAll("line")
   .append("line")
   .attr("x1", d => xScale(d[0]))
   .attr("y1", d => yScale(d[1]))
-  .attr("x2", d => ) // <-- need x2
-  .attr("y2", h - 20)
+  .attr("x2", (d, i) => i * 70 + 30 ) // <-- need x2
+  .attr("y2", h - 38)
   .attr("stroke", "black");
 
 
 
 
+/**
 // make dataset list of random numbers
 for (var i = 0; i < 20; i++){
   dataset.push(Math.round(Math.random() * 20 + 1));
