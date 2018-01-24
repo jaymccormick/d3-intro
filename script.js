@@ -60,6 +60,8 @@ svg.selectAll("text")
     .enter()
     .append("text")
     .text(d => "(" + d[0] + ", " + d[1] + ")")
+    .attr("x", (d, i) => i * 70)
+    .attr("y", () => h - 20);
 
 
 /**
