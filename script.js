@@ -36,7 +36,7 @@ var circles = svg.selectAll("circle")
 var xMax = d3.max(dataset, d => d[0]);
 var yMax = d3.max(dataset, d => d[1]);
 
-var padding = 20;
+var padding = 30;
 
 var xScale = d3.scaleLinear()
                     .domain([0, xMax])
