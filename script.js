@@ -39,7 +39,7 @@ var padding = 30;
 
 var xScale = d3.scaleLinear()
                     .domain([0, xMax])
-                    .range([padding, w - padding]);
+                    .range([padding + 10, w - padding + 10]);
 
 var yScale = d3.scaleLinear()
                     .domain([0, yMax])
@@ -53,7 +53,27 @@ circles.attr("cx", d => xScale(d[0]))
         .attr("r", d => Math.sqrt(d[1]));
 
 
-// label points with text
+
+
+// set up axes by defining axis functions
+var xAxis = d3.axisBottom(xScale) ; // orientation
+
+var yAxis = d3.axisLeft(yScale);
+
+// call axis function defined above
+svg.append("g")
+    .attr("class", "axis") // add class for css
+    .attr("transform", "translate(0," + (h - 30) + ")") // position
+    .call(xAxis);
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + (padding + 10) + ",0)")
+    .call(yAxis);
+
+
+/**
+// label points with text on the plot
 svg.selectAll("text")
     .data(dataset)
     .enter()
@@ -62,17 +82,7 @@ svg.selectAll("text")
     .attr("x", d => xScale(d[0]) - 45)
     .attr("y", d => yScale(d[1]) + Math.sqrt(d[1]) + 15);
 
-// set up axis by defining axis function
-var xAxis = d3.axisBottom(xScale) ; // orientation
-
-// call axis function defined above
-svg.append("g")
-    .attr("class", "axis") // add class for css
-    .attr("transform", "translate(0," + (h - 30) + ")") // position
-    .call(xAxis);
-
-/**
-// label the points in the scatterplot
+// label the points in the scatterplot below plot
 svg.selectAll("text")
     .data(dataset)
     .enter()
