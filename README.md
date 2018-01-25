@@ -18,4 +18,4 @@ for (var i = 0; i < 20; i++){
 }
 ```
 
-See <a href="http://alignedleft.com/tutorials/d3" target="\_blank">scott's d-3 tutorial</a>
+see <a href="http://alignedleft.com/tutorials/d3" target="_blank">scott's d-3 tutorial</a>
