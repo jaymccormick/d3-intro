@@ -19,7 +19,3 @@ for (var i = 0; i < 20; i++){
 ```
 
 see [scott's d-3 tutorial](http://alignedleft.com/tutorials/d3)
-
-<script type="javascript">
-alert('hi');
-</script>
